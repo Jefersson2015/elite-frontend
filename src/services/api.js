@@ -24,4 +24,17 @@ export const usuarioService = {
   login: (credentials) => api.post('/usuarios/login', credentials),
 };
 
+// ==================== PEDIDOS ====================
+// Se conecta con: PedidoController.java
+export const pedidoService = {
+  // POST http://localhost:8080/api/pedidos
+  crear: (pedido) => api.post('/pedidos', pedido),
+  
+  // GET http://localhost:8080/api/pedidos
+  listarTodos: () => api.get('/pedidos'),
+  
+  // GET http://localhost:8080/api/pedidos/{id}
+  buscarPorId: (id) => api.get(`/pedidos/${id}`),
+};
+
 export default api;

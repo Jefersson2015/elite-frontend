@@ -6,6 +6,7 @@ import {
   vaciarCarrito, 
   calcularTotal 
 } from '../services/carritoService';
+import { pedidoService } from '../services/api';
 import './Carrito.css';
 
 function Carrito() {
@@ -32,14 +33,14 @@ function Carrito() {
 
   const handleVaciar = () => {
     // eslint-disable-next-line no-restricted-globals
-if (confirm('¿Seguro que deseas vaciar el carrito?')) {
+    if (confirm('¿Seguro que deseas vaciar el carrito?')) {
       vaciarCarrito();
       setCarrito([]);
       setTotal(0);
     }
   };
 
-  const handleComprar = () => {
+  const handleComprar = async () => {
     if (carrito.length === 0) {
       alert('El carrito está vacío');
       return;
@@ -54,13 +55,35 @@ if (confirm('¿Seguro que deseas vaciar el carrito?')) {
       return;
     }
 
-    // Aquí se conectaría con el backend para crear el pedido
-    // Por ahora, simulamos la compra
-    alert('¡Compra realizada con éxito!\nTotal: $' + total.toLocaleString() + ' COP');
-    vaciarCarrito();
-    setCarrito([]);
-    setTotal(0);
-    navigate('/');
+    try {
+      // Preparar los datos para enviar al backend
+      const pedidoData = {
+        idUsuario: usuario.id,  // El ID del usuario logueado
+        total: total,           // Total calculado
+        items: carrito.map(item => ({
+          idProducto: item.id,
+          cantidad: item.cantidad
+        }))
+      };
+
+      // Enviar pedido al backend
+      const response = await pedidoService.crear(pedidoData);
+      
+      // Si todo sale bien
+      alert(`✅ ¡Pedido creado exitosamente!\nID: ${response.data.id}\nTotal: $${total.toLocaleString()} COP`);
+      
+      // Vaciar carrito
+      vaciarCarrito();
+      setCarrito([]);
+      setTotal(0);
+      
+      // Redirigir al inicio
+      navigate('/');
+      
+    } catch (error) {
+      console.error('Error al crear pedido:', error);
+      alert('❌ Error al crear el pedido. Verifica que el backend esté corriendo.');
+    }
   };
 
   return (

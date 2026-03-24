@@ -8,13 +8,24 @@ import ProductoCard from '../components/ProductoCard';
 
 
 function Home() {
+  // Estado para almacenar la lista de productos
   const [productos, setProductos] = useState([]);
+  // Estado para controlar la carga de datos
   const [loading, setLoading] = useState(true);
 
+  /**
+   * Efecto que se ejecuta al montar el componente
+   * Carga los productos desde el backend
+   */
   useEffect(() => {
     cargarProductos();
   }, []);
 
+   /**
+   * Función asíncrona para cargar productos desde la API
+   * @async
+   * @function cargarProductos
+   */
   const cargarProductos = async () => {
     try {
       const response = await productoService.listarTodos();
@@ -28,31 +39,37 @@ function Home() {
 
   return (
     <div className="home">
+      {/* Sección Hero - Banner principal */}
       <section className="hero">
         <h1>Nueva colección</h1>
         <p>Encuentra los mejores sneakers</p>
       </section>
 
+      {/* Sección de Categorías */}
       <section className="categorias">
         <div className="container">
           <h2>Categorías</h2>
             <div className="categorias-grid"> 
+            {/* Categoría Hombre */}
               <a href="/hombre" className="categoria-card">
   <img src={hombreImg} alt="Calzado hombre" />
   <div className="overlay"><span>HOMBRE</span></div>
 </a>
+            {/* Categoría Dama */}
 <a href="/dama" className="categoria-card">
   <img src={damaImg} alt="Calzado dama" />
   <div className="overlay"><span>DAMA</span></div>
 </a>
+            {/* Categoría Infantil */}
 <a href="/infantil" className="categoria-card">
   <img src={infantilImg} alt="Calzado infantil" />
   <div className="overlay"><span>INFANTIL</span></div>
-</a>
+  </a>
             </div>
         </div>
       </section>
 
+      {/* Sección de Productos Destacados */}
       <section className="productos-destacados">
         <div className="container">
           <h2>Productos destacados</h2>
@@ -62,10 +79,7 @@ function Home() {
             <p>Cargando productos...</p>
           ) : (
             <div className="productos-grid">
-              {/* 
-                Validación: Si hay productos, los muestra.
-                Si no hay, muestra mensaje.
-              */}
+            {/* Validar si hay productos disponibles */}
               {productos && productos.length > 0 ? (
                 productos.map((producto, index) => (
                   <ProductoCard key={producto?.id || index} producto={producto} />
