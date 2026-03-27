@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { getCantidadItems } from '../services/carritoService';
-import './Navbar.css';
-
+import '../styles/Navbar.css';
 function Navbar() {
   const [cantidadCarrito, setCantidadCarrito] = useState(0);
 

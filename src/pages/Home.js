@@ -3,7 +3,7 @@ import { productoService } from '../services/api';
 import hombreImg from '../images/hombre/nike-p6000-hombre.jpeg'
 import damaImg from '../images/dama/nike-p6000-dama.jpeg'
 import infantilImg from '../images/infantil/niñe-p6000-infantil.jpeg'
-import './Home.css';
+import '../styles/Home.css';
 import ProductoCard from '../components/ProductoCard';
 
 

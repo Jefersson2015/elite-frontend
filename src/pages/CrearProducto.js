@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { productoService } from '../services/api';
-import './CrearProducto.css';
+import '../styles/CrearProducto.css';
 
 function CrearProducto() {
   const [producto, setProducto] = useState({

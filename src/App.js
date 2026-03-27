@@ -17,7 +17,7 @@ import Carrito from './pages/Carrito';
 import AdminDashboard from './pages/AdminDashboard';
 import CrearProducto from './pages/CrearProducto';
 import Categoria from './pages/Categoria';
-import './App.css';
+import './styles/App.css';
 /**
  * Componente principal App
  * Contiene toda la estructura de rutas de la aplicación

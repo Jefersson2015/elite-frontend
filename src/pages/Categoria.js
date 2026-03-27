@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link, useLocation } from 'react-router-dom';
 import { productoService } from '../services/api';
 import ProductoCard from '../components/ProductoCard';
-import './Categoria.css';
+import '../styles/Categoria.css';
 
 function Categoria() {
   const { categoria } = useParams(); // ← Cambiado de 'nombre' a 'categoria'

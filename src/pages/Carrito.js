@@ -7,7 +7,7 @@ import {
   calcularTotal 
 } from '../services/carritoService';
 import { pedidoService } from '../services/api';
-import './Carrito.css';
+import '../styles/Carrito.css';
 
 function Carrito() {
   const [carrito, setCarrito] = useState([]);
