@@ -1,0 +1,96 @@
+.admin-dashboard {
+  min-height: 100vh;
+  background: #f5f7fa;
+  padding: 2rem;
+}
+
+.admin-header {
+  max-width: 1200px;
+  margin: 0 auto 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.admin-header h1 {
+  color: #1E3A8A;
+  font-size: 2rem;
+}
+
+.btn-logout {
+  padding: 0.8rem 1.5rem;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.btn-logout:hover {
+  background-color: #c82333;
+}
+
+.admin-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.admin-actions {
+  margin-bottom: 2rem;
+}
+
+.btn-agregar {
+  padding: 1rem 2rem;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.btn-agregar:hover {
+  background-color: #218838;
+}
+
+.productos-admin h2 {
+  color: #1E3A8A;
+  margin-bottom: 1rem;
+}
+
+.tabla-productos {
+  width: 100%;
+  background: white;
+  border-collapse: collapse;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.tabla-productos th,
+.tabla-productos td {
+  padding: 1rem;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.tabla-productos th {
+  background-color: #1E3A8A;
+  color: white;
+}
+
+.tabla-productos tr:hover {
+  background-color: #f5f5f5;
+}
+
+.btn-eliminar {
+  padding: 0.5rem 1rem;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-eliminar:hover {
+  background-color: #c82333;
+}

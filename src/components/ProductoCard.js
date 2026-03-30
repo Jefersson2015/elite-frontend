@@ -1,0 +1,86 @@
+import React from 'react';
+import { agregarAlCarrito } from '../services/carritoService';
+import '../styles/ProductoCard.css';
+
+// Función para obtener imagen según el nombre del producto
+const obtenerImagen = (nombre) => {
+  // ✅ VALIDACIÓN: Si nombre es null/undefined, retornar placeholder
+  if (!nombre) {
+    return 'https://via.placeholder.com/300x250?text=Producto';
+  }
+  
+  // Convertir a minúsculas para comparar mejor
+  const nombreLower = nombre.toLowerCase();
+  
+  // Buscar coincidencias con marcas/modelos
+  if (nombreLower.includes('nike')) {
+    return 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=300&h=250&fit=crop';
+  }
+  if (nombreLower.includes('adidas')) {
+    return 'https://images.unsplash.com/photo-1551107696-a4b0c5a0d9a2?w=300&h=250&fit=crop';
+  }
+  if (nombreLower.includes('puma')) {
+    return 'https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=300&h=250&fit=crop';
+  }
+  if (nombreLower.includes('reebok')) {
+    return 'https://images.unsplash.com/photo-1584735175315-9d5df23860e6?w=300&h=250&fit=crop';
+  }
+  if (nombreLower.includes('jordan')) {
+    return 'https://images.unsplash.com/photo-1575537302964-96cd47c06b1b?w=300&h=250&fit=crop';
+  }
+  if (nombreLower.includes('vans')) {
+    return 'https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=300&h=250&fit=crop';
+  }
+  if (nombreLower.includes('converse')) {
+    return 'https://images.unsplash.com/photo-1607522370275-f14206abe5d3?w=300&h=250&fit=crop';
+  }
+  
+  // Imagen por defecto si no coincide con ninguna marca
+  return 'https://via.placeholder.com/300x250?text=Producto';
+};
+
+function ProductoCard({ producto }) {
+  // ✅ VALIDACIÓN: Si producto es null, no renderizar nada
+  if (!producto) {
+    return null;
+  }
+
+  const handleAgregarCarrito = () => {
+    agregarAlCarrito(producto);
+    alert(`✅ ${producto.nombre || 'Producto'} agregado al carrito`);
+  };
+
+  return (
+    <div className="producto-card">
+      <img 
+        src={obtenerImagen(producto.nombre)} 
+        alt={producto.nombre || 'Producto'}
+        className="producto-imagen"
+        onError={(e) => {
+          // Si la imagen falla, cargar placeholder
+          e.target.src = 'https://via.placeholder.com/300x250?text=Producto';
+        }}
+      />
+      <div className="producto-info">
+        {/* ✅ VALIDACIÓN: Si nombre es null, mostrar 'Sin nombre' */}
+        <h3 className="producto-nombre">{producto.nombre || 'Sin nombre'}</h3>
+        
+        {/* ✅ VALIDACIÓN: Si precio es null, mostrar '0' */}
+        <p className="producto-precio">
+          ${producto.precio ? producto.precio.toLocaleString() : '0'} COP
+        </p>
+        
+        <p className="producto-stock">Stock: {producto.stock || 0}</p>
+        
+        <div className="producto-buttons">
+          <button className="btn-ver">Ver producto</button>
+          <button className="btn-carrito" onClick={handleAgregarCarrito}>
+            🛒 Agregar
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default ProductoCard;

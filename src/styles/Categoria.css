@@ -1,0 +1,88 @@
+.categoria-page {
+  min-height: 100vh;
+}
+
+.categoria-header {
+  background: linear-gradient(135deg, #1E3A8A 0%, #3B82F6 100%);
+  color: white;
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+.categoria-header h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  text-transform: capitalize;
+}
+
+.btn-volver {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  background-color: white;
+  color: #1E3A8A;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+
+.btn-volver:hover {
+  background-color: #f5f5f5;
+  transform: translateY(-2px);
+}
+
+.categoria-productos {
+  padding: 4rem 0;
+  background-color: #f5f7fa;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.categoria-productos h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #1E3A8A;
+  text-transform: capitalize;
+}
+
+.productos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.sin-productos {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.sin-productos p {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 2rem;
+}
+
+.btn-ir-tienda {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background-color: #1E3A8A;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: 500;
+  transition: background-color 0.3s;
+}
+
+.btn-ir-tienda:hover {
+  background-color: #152a6b;
+}
