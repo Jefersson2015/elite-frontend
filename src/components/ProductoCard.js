@@ -1,7 +1,10 @@
 import React from 'react';
 import { agregarAlCarrito } from '../services/carritoService';
 import '../styles/ProductoCard.css';
+<<<<<<< HEAD
 
+=======
+>>>>>>> cc8bbaebc192c62715048185db815de02b35ec84
 // Función para obtener imagen según el nombre del producto
 const obtenerImagen = (nombre) => {
   // ✅ VALIDACIÓN: Si nombre es null/undefined, retornar placeholder
