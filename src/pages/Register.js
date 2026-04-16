@@ -4,17 +4,24 @@ import { usuarioService } from '../services/api';
 import '../styles/Auth.css';
 
 function Register() {
-  const [formData, setFormData] = useState({ username: '', password: '', rol: 'cliente' });
-  const navigate = useNavigate();
+  const [formData, setFormData] = useState({ username: '', password: '', roll: 'cliente' });  // almacena los datos del formulario de registro - automaticamente se asigna rol 'cliente'
+  const [mensaje, setMensaje] = useState(null); // Estado para el mensaje
+  const [tipo, setTipo] = useState(''); // 'exito' verde o 'error' rojo
+  const navigate = useNavigate();   // Hook para redirigir al usuario después del registro exitoso
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault();   // Evita que el formulario recargue la página
     try {
-      await usuarioService.registrar(formData);
-      alert('¡Registro exitoso!');
-      navigate('/login');
+      await usuarioService.registrar(formData);   // Envía los datos del formulario al backend (UsuarioController.java)
+      setMensaje('¡Registro exitoso! Redirigiendo...');
+      setTipo('exito');
+      // si es exitoso = verde. Espera 2 segundos y redirige al login
+      setTimeout(() => navigate('/login'), 2000);
     } catch (error) {
-      alert('Error al registrar');
+      setMensaje('Error al registrar. Intenta con otro correo.');
+      setTipo('error');
+      // si es error = rojo. El mensaje desaparece después de 3 segundos
+      setTimeout(() => setMensaje(null), 3000);
     }
   };
 
@@ -22,6 +29,14 @@ function Register() {
     <div className="auth-container">
       <div className="auth-card">
         <h2>Crear cuenta</h2>
+
+        {/* Mensaje de éxito o error */}
+        {mensaje && (
+          <div className={`mensaje-alerta ${tipo}`}>
+            {mensaje}
+          </div>
+        )}
+
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <input
@@ -32,9 +47,8 @@ function Register() {
               required
             />
           </div>
-          <div className="form-group">
-            <input
-              type="password"
+          <div className="form-group"> 
+              <input type="password"
               placeholder="Contraseña"
               value={formData.password}
               onChange={(e) => setFormData({...formData, password: e.target.value})}
